@@ -193,88 +193,139 @@
 
     <!-- Booking Section -->
     <section id="booking" class="section booking">
-        <div class="container booking-container">
-            <div class="booking-wrapper premium-booking-card" data-aos="zoom-in">
-                <div class="booking-header">
-                    <h2>Book Your <span class="highlight">Ride</span></h2>
-                    <p>Fill out the details below. We'll instantly format a WhatsApp message for you to send to our booking team.</p>
-                </div>
-                
-                <div class="trust-indicators">
-                    <span><i class="fas fa-check-circle highlight"></i> Quick Response</span>
-                    <span><i class="fas fa-check-circle highlight"></i> Safe & Reliable</span>
-                    <span><i class="fas fa-check-circle highlight"></i> No Advance Payment</span>
-                    <span><i class="fas fa-check-circle highlight"></i> 24/7 Support</span>
-                </div>
-                
-                <form class="booking-form" id="bookingForm">
-                    <div id="form-messages" class="full-width-group"></div>
-                    
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Book Your <span class="highlight">Ride</span></h2>
+                <p>Tell us your travel requirements and we'll get back to you quickly.</p>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="trust-badges" data-aos="fade-up" data-aos-delay="100">
+                <div class="trust-badge"><i class="fas fa-bolt"></i><span>Quick Response</span></div>
+                <div class="trust-badge"><i class="fas fa-clock"></i><span>24/7 Service</span></div>
+                <div class="trust-badge"><i class="fas fa-shield-alt"></i><span>Safe & Reliable</span></div>
+                <div class="trust-badge"><i class="fas fa-id-badge"></i><span>Professional Drivers</span></div>
+            </div>
+
+            <div class="booking-card" data-aos="fade-up" data-aos-delay="200">
+                <div id="form-messages"></div>
+
+                <form id="bookingForm" class="booking-form" novalidate>
+                    <!-- Row 1: Name & Phone -->
                     <div class="form-group">
-                        <label for="name">Full Name *</label>
+                        <label for="name"><i class="fas fa-user"></i> Full Name *</label>
                         <input type="text" id="name" required placeholder="Enter your full name">
                     </div>
                     <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" required placeholder="Enter 10-digit number" pattern="[0-9]{10}">
+                        <label for="phone"><i class="fas fa-phone-alt"></i> Phone Number *</label>
+                        <input type="tel" id="phone" required placeholder="10-digit mobile number" maxlength="10">
                     </div>
-                    
+
+                    <!-- Row 2: Pickup & Destination -->
                     <div class="form-group">
-                        <label for="pickup">Pickup Location *</label>
+                        <label for="pickup"><i class="fas fa-map-marker-alt"></i> Pickup Location *</label>
                         <input type="text" id="pickup" required placeholder="Where from?">
                     </div>
                     <div class="form-group">
-                        <label for="destination">Destination *</label>
+                        <label for="destination"><i class="fas fa-flag-checkered"></i> Destination *</label>
                         <input type="text" id="destination" required placeholder="Where to?">
                     </div>
-                    
+
+                    <!-- Row 3: Date & Travel Type -->
                     <div class="form-group">
-                        <label for="date">Travel Date *</label>
+                        <label for="date"><i class="fas fa-calendar-alt"></i> Travel Date *</label>
                         <input type="date" id="date" required>
                     </div>
                     <div class="form-group">
-                        <label for="travel_type">Travel Type *</label>
+                        <label for="travel_type"><i class="fas fa-route"></i> Travel Type *</label>
                         <select id="travel_type" required>
                             <option value="" disabled selected>Select Travel Type</option>
-                            <option value="Local Trip">Local Trip</option>
-                            <option value="Outstation Trip">Outstation Trip</option>
+                            <option value="Local Travel">Local Travel</option>
+                            <option value="Outstation Travel">Outstation Travel</option>
                             <option value="Interstate Travel">Interstate Travel</option>
                             <option value="Package Tour">Package Tour</option>
+                            <option value="Airport Transfer">Airport Transfer</option>
                             <option value="Corporate Travel">Corporate Travel</option>
                         </select>
                     </div>
-                    
+
+                    <!-- Row 4: Vehicle & Passengers -->
                     <div class="form-group">
-                        <label for="vehicle_type">Vehicle Type *</label>
+                        <label for="vehicle_type"><i class="fas fa-car"></i> Vehicle Type *</label>
                         <select id="vehicle_type" required>
                             <option value="" disabled selected>Select Vehicle Type</option>
-                            <option value="Swift Dzire">Swift Dzire (1-4 Passengers)</option>
-                            <option value="Innova">Innova (5-7 Passengers)</option>
-                            <option value="Tempo Traveller">Tempo Traveller (8-17 Passengers)</option>
+                            <option value="Swift Dzire" data-max="4">Swift Dzire (1–4 Passengers)</option>
+                            <option value="Ertiga" data-max="7">Ertiga (5–7 Passengers)</option>
+                            <option value="Xylo" data-max="7">Xylo (5–7 Passengers)</option>
+                            <option value="Innova" data-max="7">Innova (5–7 Passengers)</option>
+                            <option value="Tempo Traveller" data-max="17">Tempo Traveller (8–17 Passengers)</option>
                         </select>
+                        <div id="vehicle-suggestion" class="vehicle-suggestion" style="display:none;"></div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="contact_pref">Preferred Contact Method *</label>
-                        <select id="contact_pref" required>
-                            <option value="" disabled selected>Select Contact Preference</option>
-                            <option value="WhatsApp">WhatsApp</option>
-                            <option value="Phone Call">Phone Call</option>
-                        </select>
+
+                    <!-- Row 5: Contact Method -->
+                    <div class="form-group form-group-full">
+                        <label for="contact_pref"><i class="fas fa-comment-dots"></i> Preferred Contact Method *</label>
+                        <div class="contact-pref-grid">
+                            <label class="radio-card" id="pref-wa">
+                                <input type="radio" name="contact_pref" id="contact_pref_wa" value="WhatsApp" required>
+                                <div class="radio-card-inner">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>WhatsApp</span>
+                                </div>
+                            </label>
+                            <label class="radio-card" id="pref-call">
+                                <input type="radio" name="contact_pref" id="contact_pref_call" value="Phone Call">
+                                <div class="radio-card-inner">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span>Phone Call</span>
+                                </div>
+                            </label>
+                        </div>
                     </div>
-                    
-                    <div class="form-group full-width-group">
-                        <label for="notes">Additional Notes</label>
-                        <textarea id="notes" rows="3" placeholder="Any special requests..."></textarea>
+
+                    <!-- Row 6: Notes -->
+                    <div class="form-group form-group-full">
+                        <label for="notes"><i class="fas fa-sticky-note"></i> Additional Notes</label>
+                        <textarea id="notes" rows="3" placeholder="Any special requests, preferred time, or extra information..."></textarea>
                     </div>
-                    
-                    <button type="submit" class="btn btn-whatsapp submit-btn full-width-group large-whatsapp-btn" id="submitBtn">
-                        <i class="fab fa-whatsapp"></i> Request Booking via WhatsApp
-                    </button>
+
+                    <!-- Submit -->
+                    <div class="form-group form-group-full">
+                        <button type="submit" class="btn-booking-submit" id="submitBtn">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>Send Booking Request via WhatsApp</span>
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
     </section>
+
+    <!-- Booking Summary Modal -->
+    <div id="bookingModal" class="booking-modal" style="display:none;">
+        <div class="booking-modal-overlay" id="modalOverlay"></div>
+        <div class="booking-modal-card">
+            <div class="modal-header">
+                <i class="fas fa-check-circle modal-success-icon"></i>
+                <h3>Booking Summary</h3>
+                <p>Please review your details before sending.</p>
+            </div>
+            <div class="modal-body">
+                <div class="summary-row"><span class="summary-label">Name</span><span class="summary-value" id="sum-name"></span></div>
+                <div class="summary-row"><span class="summary-label">Phone</span><span class="summary-value" id="sum-phone"></span></div>
+                <div class="summary-row"><span class="summary-label">Pickup</span><span class="summary-value" id="sum-pickup"></span></div>
+                <div class="summary-row"><span class="summary-label">Destination</span><span class="summary-value" id="sum-dest"></span></div>
+                <div class="summary-row"><span class="summary-label">Travel Date</span><span class="summary-value" id="sum-date"></span></div>
+                <div class="summary-row"><span class="summary-label">Vehicle</span><span class="summary-value" id="sum-vehicle"></span></div>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn-edit" id="modalEdit"><i class="fas fa-pencil-alt"></i> Edit Details</button>
+                <button class="modal-btn-confirm" id="modalConfirm"><i class="fab fa-whatsapp"></i> Continue to WhatsApp</button>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Contact Section -->
     <section id="contact" class="section contact">
