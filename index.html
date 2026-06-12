@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vinayaga Tours & Travels - Your Journey, Our Priority. Premium travel services in Aruppukottai, Tamil Nadu.">
+    <title>Vinayaga Tours & Travels | Premium Travel Services</title>
+    
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Consolidated Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Sticky Navigation -->
+    <header id="header" class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="Vinayaga Tours & Travels Logo" class="logo-img">
+            </a>
+            
+            <nav class="navbar" id="navbar">
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#coverage" class="nav-link">Coverage</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#booking" class="btn btn-primary nav-book-btn">Book Now</a>
+                <div class="hamburger" id="hamburger" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav-links">
+            <li><a href="#home" class="mobile-link">Home</a></li>
+            <li><a href="#services" class="mobile-link">Services</a></li>
+            <li><a href="#coverage" class="mobile-link">Coverage</a></li>
+            <li><a href="#about" class="mobile-link">About Us</a></li>
+            <li><a href="#booking" class="mobile-link">Booking</a></li>
+            <li><a href="#contact" class="mobile-link">Contact</a></li>
+            <li><a href="#booking" class="btn btn-primary full-width mobile-link mt-4">Book Now</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-container">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <span class="hero-subtitle">Welcome to Aruppukottai's Finest</span>
+                <h1 class="hero-title">Vinayaga Tours <span class="highlight">& Travels</span></h1>
+                <p class="hero-tagline">Your Journey, Our Priority.</p>
+                <p class="hero-desc">Experience seamless, comfortable, and reliable travel across South India with our premium fleet and professional drivers.</p>
+                
+                <div class="hero-highlights">
+                    <span class="highlight-item"><i class="fas fa-check-circle"></i> Local Trips</span>
+                    <span class="highlight-item"><i class="fas fa-check-circle"></i> Outstation Trips</span>
+                    <span class="highlight-item"><i class="fas fa-check-circle"></i> Interstate Travel</span>
+                    <span class="highlight-item"><i class="fas fa-check-circle"></i> Package Tours</span>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="tel:+917603813277" class="btn btn-outline"><i class="fas fa-phone-alt"></i> Call Now</a>
+                    <a href="https://wa.me/917603813277" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="#booking" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Premium <span class="highlight">Services</span></h2>
+                <p>Tailored travel solutions designed to meet your every need.</p>
+            </div>
+            
+            <div class="grid-layout services-grid">
+                <!-- Service Cards -->
+                <div class="card glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Local Trips</h3>
+                    <p>Comfortable and prompt travel within Aruppukottai and surrounding areas.</p>
+                </div>
+                <div class="card glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon"><i class="fas fa-route"></i></div>
+                    <h3>Outstation Trips</h3>
+                    <p>Reliable travel across Tamil Nadu for family functions and business.</p>
+                </div>
+                <div class="card glass-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <h3>Interstate Travel</h3>
+                    <p>Seamless cross-border travel to Kerala, Karnataka, and beyond.</p>
+                </div>
+                <div class="card glass-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>Round Trips</h3>
+                    <p>Cost-effective round-trip packages ensuring a hassle-free return journey.</p>
+                </div>
+                <div class="card glass-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-icon"><i class="fas fa-suitcase-rolling"></i></div>
+                    <h3>Package Tours</h3>
+                    <p>Customized holiday and spiritual tour packages for your family.</p>
+                </div>
+                <div class="card glass-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card-icon"><i class="fas fa-plane-departure"></i></div>
+                    <h3>Airport Pickup & Drop</h3>
+                    <p>Punctual airport transfers ensuring you never miss a flight.</p>
+                </div>
+                <div class="card glass-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="card-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Corporate Travel</h3>
+                    <p>Professional travel arrangements for executives and company staff.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Section -->
+    <section id="coverage" class="section coverage">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Our Travel <span class="highlight">Coverage</span></h2>
+                <p>We provide extensive travel services across major South Indian states.</p>
+            </div>
+            
+            <div class="grid-layout coverage-grid">
+                <div class="card coverage-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3><i class="fas fa-map-pin"></i> Tamil Nadu</h3>
+                </div>
+                <div class="card coverage-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3><i class="fas fa-map-pin"></i> Kerala</h3>
+                </div>
+                <div class="card coverage-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3><i class="fas fa-map-pin"></i> Karnataka</h3>
+                </div>
+                <div class="card coverage-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                    <h3><i class="fas fa-map-pin"></i> Andhra Pradesh</h3>
+                </div>
+                <div class="card coverage-card glass-card" data-aos="fade-up" data-aos-delay="500">
+                    <h3><i class="fas fa-map-pin"></i> Telangana</h3>
+                </div>
+                <div class="card coverage-card glass-card" data-aos="fade-up" data-aos-delay="600">
+                    <h3><i class="fas fa-map-pin"></i> Puducherry</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us & About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="about-flex">
+                <div class="about-content" data-aos="fade-right">
+                    <h2>About <span class="highlight">Us</span></h2>
+                    <p class="about-lead">Vinayaga Tours & Travels is committed to delivering unparalleled travel experiences.</p>
+                    <p>With years of expertise in the travel industry, we prioritize your safety, comfort, and schedule. Whether it's a short local trip or an extensive interstate journey, our professional drivers and meticulously maintained fleet ensure you reach your destination with peace of mind. Your journey truly is our priority.</p>
+                </div>
+                <div class="features-content glass-card" data-aos="fade-left">
+                    <h3>Why Choose Us?</h3>
+                    <ul class="features-list">
+                        <li><i class="fas fa-clock highlight"></i> 24/7 Service</li>
+                        <li><i class="fas fa-id-badge highlight"></i> Professional Drivers</li>
+                        <li><i class="fas fa-tags highlight"></i> Affordable Pricing</li>
+                        <li><i class="fas fa-shield-alt highlight"></i> Safe Travel</li>
+                        <li><i class="fas fa-couch highlight"></i> Comfortable Journey</li>
+                        <li><i class="fas fa-smile highlight"></i> Customer Satisfaction</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="section booking">
+        <div class="container booking-container">
+            <div class="booking-wrapper premium-booking-card" data-aos="zoom-in">
+                <div class="booking-header">
+                    <h2>Book Your <span class="highlight">Ride</span></h2>
+                    <p>Fill out the details below. We'll instantly format a WhatsApp message for you to send to our booking team.</p>
+                </div>
+                
+                <div class="trust-indicators">
+                    <span><i class="fas fa-check-circle highlight"></i> Quick Response</span>
+                    <span><i class="fas fa-check-circle highlight"></i> Safe & Reliable</span>
+                    <span><i class="fas fa-check-circle highlight"></i> No Advance Payment</span>
+                    <span><i class="fas fa-check-circle highlight"></i> 24/7 Support</span>
+                </div>
+                
+                <form class="booking-form" id="bookingForm">
+                    <div id="form-messages" class="full-width-group"></div>
+                    
+                    <!-- Row 1 -->
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" required placeholder="Enter 10-digit number" pattern="[0-9]{10}">
+                    </div>
+                    
+                    <!-- Row 2 -->
+                    <div class="form-group">
+                        <label for="pickup">Pickup Location *</label>
+                        <input type="text" id="pickup" required placeholder="Where from?">
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Destination *</label>
+                        <input type="text" id="destination" required placeholder="Where to?">
+                    </div>
+                    
+                    <!-- Row 3 -->
+                    <div class="form-group">
+                        <label for="date">Travel Date *</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="travel_type">Travel Type *</label>
+                        <select id="travel_type" required>
+                            <option value="" disabled selected>Select Travel Type</option>
+                            <option value="Local Trip">Local Trip</option>
+                            <option value="Outstation Trip">Outstation Trip</option>
+                            <option value="Interstate Travel">Interstate Travel</option>
+                            <option value="Package Tour">Package Tour</option>
+                            <option value="Corporate Travel">Corporate Travel</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Row 4 -->
+                    <div class="form-group full-width-group">
+                        <label for="trip_mode">Trip Mode *</label>
+                        <select id="trip_mode" required>
+                            <option value="" disabled selected>Select Trip Mode</option>
+                            <option value="One Way">One Way</option>
+                            <option value="Round Trip">Round Trip</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Row 5 / 6 -->
+                    <div class="form-group full-width-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" rows="3" placeholder="Any special requests..."></textarea>
+                    </div>
+                    
+                    <!-- Row 7 -->
+                    <button type="submit" class="btn btn-whatsapp submit-btn full-width-group large-whatsapp-btn" id="submitBtn">
+                        <i class="fab fa-whatsapp"></i> Request Booking via WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Get In <span class="highlight">Touch</span></h2>
+                <p>We are always ready to assist you. Contact us directly through any of these channels.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info glass-card" data-aos="fade-right">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4>Our Office</h4>
+                            <p>Aruppukottai, Tamil Nadu, India</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>Sankar Ram: <a href="tel:+917603813277" class="hover-link">+91 7603813277</a></p>
+                            <p>Alternate: <a href="tel:+919942770166" class="hover-link">+91 9942770166</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p><a href="https://wa.me/917603813277" target="_blank" class="hover-link">+91 7603813277</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p><a href="mailto:contact@vinayagatourstravels07.com" class="hover-link">@vinayagatourstravels07.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-buttons mt-4">
+                        <a href="tel:+917603813277" class="btn btn-outline"><i class="fas fa-phone-alt"></i> Call</a>
+                        <a href="https://wa.me/917603813277" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="contact-map glass-card" data-aos="fade-left">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62954.51268393527!2d78.06173004381895!3d9.510006323675765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b013eec6a982181%3A0xe37a8f339cf012c8!2sAruppukottai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <img src="images/logo.png" alt="Vinayaga Tours Logo" class="footer-logo">
+                <p>Your Journey, Our Priority. Premium travel and taxi services in Aruppukottai and across South India.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#coverage">Coverage</a></li>
+                    <li><a href="#booking">Book a Ride</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Details</h4>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-map-marker-alt"></i> Aruppukottai, Tamil Nadu</li>
+                    <li><i class="fas fa-phone-alt"></i> +91 7603813277</li>
+                    <li><i class="fas fa-phone-alt"></i> +91 9942770166</li>
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:contact@vinayagatourstravels07.com" style="color: inherit; text-decoration: none;">@vinayagatourstravels07.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2024 Vinayaga Tours & Travels. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Floating Actions -->
+    <div class="floating-actions mobile-only-hide-bar">
+        <a href="https://wa.me/917603813277" target="_blank" class="float-btn float-wa" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+917603813277" class="float-btn float-call" aria-label="Call">
+            <i class="fas fa-phone-alt"></i>
+        </a>
+    </div>
+
+    <!-- Sticky Bottom Contact Bar (Mobile Only) -->
+    <div class="bottom-contact-bar">
+        <a href="tel:+917603813277" class="bottom-bar-btn call-btn">
+            <i class="fas fa-phone-alt"></i> Call Now
+        </a>
+        <a href="https://wa.me/917603813277" target="_blank" class="bottom-bar-btn wa-btn">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
