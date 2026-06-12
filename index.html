@@ -33,6 +33,7 @@
                 <ul class="nav-links">
                     <li><a href="#home" class="nav-link">Home</a></li>
                     <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#fleet" class="nav-link">Fleet</a></li>
                     <li><a href="#coverage" class="nav-link">Coverage</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -53,6 +54,7 @@
         <ul class="mobile-nav-links">
             <li><a href="#home" class="mobile-link">Home</a></li>
             <li><a href="#services" class="mobile-link">Services</a></li>
+            <li><a href="#fleet" class="mobile-link">Fleet</a></li>
             <li><a href="#coverage" class="mobile-link">Coverage</a></li>
             <li><a href="#about" class="mobile-link">About Us</a></li>
             <li><a href="#booking" class="mobile-link">Booking</a></li>
@@ -131,6 +133,51 @@
                     <div class="card-icon"><i class="fas fa-briefcase"></i></div>
                     <h3>Corporate Travel</h3>
                     <p>Professional travel arrangements for executives and company staff.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="fleet" class="section fleet">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Our Premium <span class="highlight">Fleet</span></h2>
+                <p>Choose the perfect vehicle for your journey.</p>
+            </div>
+            
+            <div class="grid-layout fleet-grid">
+                <div class="card fleet-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon"><i class="fas fa-car-side"></i></div>
+                    <h3>Swift Dzire <span class="capacity">(4+1)</span></h3>
+                    <p>Comfortable sedan for small families and business travel.</p>
+                </div>
+                <div class="card fleet-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon"><i class="fas fa-car-side"></i></div>
+                    <h3>Ertiga <span class="capacity">(7+1)</span></h3>
+                    <p>Ideal for medium-sized family trips.</p>
+                </div>
+                <div class="card fleet-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon"><i class="fas fa-shuttle-van"></i></div>
+                    <h3>Innova <span class="capacity">(7+1)</span></h3>
+                    <p>Premium travel experience for families and groups.</p>
+                </div>
+                <div class="card fleet-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-icon"><i class="fas fa-shuttle-van"></i></div>
+                    <h3>Xylo <span class="capacity">(7+1)</span></h3>
+                    <p>Spacious and comfortable travel option.</p>
+                </div>
+                <div class="card fleet-card glass-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-icon"><i class="fas fa-bus-alt"></i></div>
+                    <h3>Tempo Traveller</h3>
+                    <p class="fleet-variants">Available in: <strong>12+1</strong> | <strong>14+1</strong> | <strong>18+1</strong></p>
+                    <p>Perfect for group tours and events.</p>
+                </div>
+                <div class="card fleet-card glass-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card-icon"><i class="fas fa-bus"></i></div>
+                    <h3>Coach Van</h3>
+                    <p class="fleet-variants">Available in: <strong>23+1</strong> | <strong>25+1</strong></p>
+                    <p>Suitable for large groups, tours, pilgrimages, and corporate travel.</p>
                 </div>
             </div>
         </div>
@@ -231,11 +278,29 @@
                         <input type="text" id="destination" required placeholder="Where to?">
                     </div>
 
-                    <!-- Row 3: Date & Travel Type -->
+                    <!-- Row 3: Travel Date & Return Date -->
                     <div class="form-group">
-                        <label for="date"><i class="fas fa-calendar-alt"></i> Travel Date *</label>
+                        <label for="date"><i class="fas fa-calendar-alt"></i> Departure Date *</label>
                         <input type="date" id="date" required>
                     </div>
+                    <div class="form-group">
+                        <label for="return_date"><i class="fas fa-calendar-check"></i> Return Date <span class="optional-tag">(Optional)</span></label>
+                        <input type="date" id="return_date">
+                    </div>
+
+                    <!-- Trip Summary Card -->
+                    <div class="form-group form-group-full" id="trip-summary-wrapper" style="display:none;">
+                        <div class="trip-summary-card">
+                            <div class="trip-summary-header"><i class="fas fa-calendar-alt"></i> Trip Summary</div>
+                            <div class="trip-summary-body">
+                                <div class="trip-detail"><span class="trip-label">Departure</span><span class="trip-value" id="trip-depart"></span></div>
+                                <div class="trip-detail"><span class="trip-label">Return</span><span class="trip-value" id="trip-return"></span></div>
+                                <div class="trip-detail trip-duration"><span class="trip-label">Duration</span><span class="trip-value" id="trip-duration"></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 4: Travel Type & Vehicle -->
                     <div class="form-group">
                         <label for="travel_type"><i class="fas fa-route"></i> Travel Type *</label>
                         <select id="travel_type" required>
@@ -254,11 +319,15 @@
                         <label for="vehicle_type"><i class="fas fa-car"></i> Vehicle Type *</label>
                         <select id="vehicle_type" required>
                             <option value="" disabled selected>Select Vehicle Type</option>
-                            <option value="Swift Dzire" data-max="4">Swift Dzire (1–4 Passengers)</option>
-                            <option value="Ertiga" data-max="7">Ertiga (5–7 Passengers)</option>
-                            <option value="Xylo" data-max="7">Xylo (5–7 Passengers)</option>
-                            <option value="Innova" data-max="7">Innova (5–7 Passengers)</option>
-                            <option value="Tempo Traveller" data-max="17">Tempo Traveller (8–17 Passengers)</option>
+                            <option value="Swift Dzire (4+1)">Swift Dzire (4+1)</option>
+                            <option value="Ertiga (7+1)">Ertiga (7+1)</option>
+                            <option value="Innova (7+1)">Innova (7+1)</option>
+                            <option value="Xylo (7+1)">Xylo (7+1)</option>
+                            <option value="Tempo Traveller (12+1)">Tempo Traveller (12+1)</option>
+                            <option value="Tempo Traveller (14+1)">Tempo Traveller (14+1)</option>
+                            <option value="Tempo Traveller (18+1)">Tempo Traveller (18+1)</option>
+                            <option value="Coach Van (23+1)">Coach Van (23+1)</option>
+                            <option value="Coach Van (25+1)">Coach Van (25+1)</option>
                         </select>
                         <div id="vehicle-suggestion" class="vehicle-suggestion" style="display:none;"></div>
                     </div>
@@ -316,7 +385,9 @@
                 <div class="summary-row"><span class="summary-label">Phone</span><span class="summary-value" id="sum-phone"></span></div>
                 <div class="summary-row"><span class="summary-label">Pickup</span><span class="summary-value" id="sum-pickup"></span></div>
                 <div class="summary-row"><span class="summary-label">Destination</span><span class="summary-value" id="sum-dest"></span></div>
-                <div class="summary-row"><span class="summary-label">Travel Date</span><span class="summary-value" id="sum-date"></span></div>
+                <div class="summary-row"><span class="summary-label">Departure</span><span class="summary-value" id="sum-date"></span></div>
+                <div class="summary-row" id="sum-return-row" style="display:none;"><span class="summary-label">Return</span><span class="summary-value" id="sum-return"></span></div>
+                <div class="summary-row" id="sum-duration-row" style="display:none;"><span class="summary-label">Duration</span><span class="summary-value" id="sum-duration"></span></div>
                 <div class="summary-row"><span class="summary-label">Vehicle</span><span class="summary-value" id="sum-vehicle"></span></div>
             </div>
             <div class="modal-actions">
