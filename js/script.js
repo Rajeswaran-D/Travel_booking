@@ -70,7 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const destination = document.getElementById('destination').value.trim();
             const date = document.getElementById('date').value;
             const travel_type = document.getElementById('travel_type').value;
+            const passengers = document.getElementById('passengers').value.trim();
             const trip_mode = document.getElementById('trip_mode').value;
+            const contact_pref = document.getElementById('contact_pref').value;
             const notes = document.getElementById('notes').value.trim();
 
             // Phone Validation (basic 10 digits)
@@ -94,7 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 waMessage += `🏁 *Destination:* ${destination}%0A`;
                 waMessage += `📅 *Travel Date:* ${date}%0A`;
                 waMessage += `🚗 *Travel Type:* ${travel_type}%0A`;
+                waMessage += `👥 *Passengers:* ${passengers}%0A`;
                 waMessage += `🔄 *Trip Mode:* ${trip_mode}%0A`;
+                waMessage += `📱 *Contact Pref:* ${contact_pref}%0A`;
                 if(notes) {
                     waMessage += `📝 *Notes:* ${notes}%0A`;
                 }
