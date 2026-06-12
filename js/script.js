@@ -70,8 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const destination = document.getElementById('destination').value.trim();
             const date = document.getElementById('date').value;
             const travel_type = document.getElementById('travel_type').value;
-            const passengers = document.getElementById('passengers').value.trim();
-            const trip_mode = document.getElementById('trip_mode').value;
+            const vehicle_type = document.getElementById('vehicle_type').value;
             const contact_pref = document.getElementById('contact_pref').value;
             const notes = document.getElementById('notes').value.trim();
 
@@ -89,19 +88,22 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 // Generate WhatsApp Link
                 const waNumber = '917603813277';
-                let waMessage = `🚖 *New Booking Request*%0A%0A`;
-                waMessage += `👤 *Name:* ${name}%0A`;
-                waMessage += `📞 *Phone:* ${phone}%0A`;
-                waMessage += `📍 *Pickup:* ${pickup}%0A`;
-                waMessage += `🏁 *Destination:* ${destination}%0A`;
+                let waMessage = `🚖 *VINAYAGA TOURS & TRAVELS*%0A%0A`;
+                waMessage += `*NEW BOOKING REQUEST*%0A%0A`;
+                waMessage += `👤 *Customer Name:* ${name}%0A`;
+                waMessage += `📞 *Mobile Number:* ${phone}%0A%0A`;
+                waMessage += `📍 *Pickup Location:* ${pickup}%0A`;
+                waMessage += `🏁 *Destination:* ${destination}%0A%0A`;
                 waMessage += `📅 *Travel Date:* ${date}%0A`;
                 waMessage += `🚗 *Travel Type:* ${travel_type}%0A`;
-                waMessage += `👥 *Passengers:* ${passengers}%0A`;
-                waMessage += `🔄 *Trip Mode:* ${trip_mode}%0A`;
-                waMessage += `📱 *Contact Pref:* ${contact_pref}%0A`;
+                waMessage += `🚘 *Vehicle Type:* ${vehicle_type}%0A%0A`;
+                waMessage += `📱 *Preferred Contact Method:* ${contact_pref}%0A%0A`;
+                
                 if(notes) {
-                    waMessage += `📝 *Notes:* ${notes}%0A`;
+                    waMessage += `📝 *Additional Notes:* ${notes}%0A%0A`;
                 }
+                
+                waMessage += `Please contact the customer regarding this booking request.`;
                 
                 const waUrl = `https://wa.me/${waNumber}?text=${waMessage}`;
                 
