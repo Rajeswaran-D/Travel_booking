@@ -266,7 +266,9 @@ document.addEventListener('DOMContentLoaded', function() {
         'Xylo (7+1)': 'images/Xylo.jpg',
         'Tempo Traveller (12+1)': 'images/traveller.jpg',
         'Tempo Traveller (14+1)': 'images/traveller.jpg',
-        'Tempo Traveller (18+1)': 'images/traveller.jpg'
+        'Tempo Traveller (18+1)': 'images/traveller.jpg',
+        'Coach Van (23+1)': 'images/coachvan.png',
+        'Coach Van (25+1)': 'images/coachvan.png'
     };
 
     if (vehicleTypeSelect && vehicleSuggestion) {
