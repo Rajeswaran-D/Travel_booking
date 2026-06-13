@@ -426,6 +426,41 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
 }
 
+/* Fleet Hover Images */
+.fleet-image-wrapper {
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+    margin-bottom: 0;
+}
+
+.fleet-hover-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.fleet-card .card-icon {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.fleet-card:hover .fleet-image-wrapper {
+    height: 180px;
+    opacity: 1;
+    margin-bottom: 20px;
+}
+
+.fleet-card:hover .card-icon {
+    height: 0;
+    opacity: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+
 /* =========================================
    COVERAGE
    ========================================= */
@@ -652,6 +687,15 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.85rem;
     color: var(--secondary-color);
     font-weight: 500;
+}
+
+.booking-vehicle-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 /* Optional Tag */

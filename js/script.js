@@ -255,4 +255,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ── Vehicle Image Display ──────────────────────────────────────
+    var vehicleTypeSelect = document.getElementById('vehicle_type');
+    var vehicleSuggestion = document.getElementById('vehicle-suggestion');
+
+    var vehicleImages = {
+        'Swift Dzire (4+1)': 'images/Swift.jpg',
+        'Ertiga (7+1)': 'images/ertiga.jpg',
+        'Innova (7+1)': 'images/inova.jpg',
+        'Xylo (7+1)': 'images/Xylo.jpg',
+        'Tempo Traveller (12+1)': 'images/traveller.jpg',
+        'Tempo Traveller (14+1)': 'images/traveller.jpg',
+        'Tempo Traveller (18+1)': 'images/traveller.jpg'
+    };
+
+    if (vehicleTypeSelect && vehicleSuggestion) {
+        vehicleTypeSelect.addEventListener('change', function() {
+            var selectedVehicle = this.value;
+            var imageSrc = vehicleImages[selectedVehicle];
+            
+            if (imageSrc) {
+                vehicleSuggestion.innerHTML = '<img src="' + imageSrc + '" alt="' + selectedVehicle + '" class="booking-vehicle-img">';
+                vehicleSuggestion.style.display = 'block';
+            } else {
+                vehicleSuggestion.style.display = 'none';
+                vehicleSuggestion.innerHTML = '';
+            }
+        });
+    }
+
 });
