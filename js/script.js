@@ -264,9 +264,10 @@ document.addEventListener('DOMContentLoaded', function() {
         'Ertiga (7+1)': 'images/ertiga.jpg',
         'Innova (7+1)': 'images/inova.jpg',
         'Xylo (7+1)': 'images/Xylo.jpg',
-        'Tempo Traveller (12+1)': 'images/traveller.jpg',
-        'Tempo Traveller (14+1)': 'images/traveller.jpg',
-        'Tempo Traveller (18+1)': 'images/traveller.jpg',
+        'Tempo Traveller (12+1)': 'images/traveller.png',
+        'Tempo Traveller (14+1)': 'images/traveller.png',
+        'Tempo Traveller (18+1)': 'images/traveller.png',
+        'Mahindra Tourist Van (17+1)': 'images/tourist.png',
         'Coach Van (23+1)': 'images/coachvan.png',
         'Coach Van (25+1)': 'images/coachvan.png'
     };
