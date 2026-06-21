@@ -55,11 +55,64 @@ document.addEventListener('DOMContentLoaded', function() {
     var tripReturn      = document.getElementById('trip-return');
     var tripDuration    = document.getElementById('trip-duration');
 
+    var pickupTimeInput = document.getElementById('pickup_time');
+    var pickupInput     = document.getElementById('pickup');
+    var destInput       = document.getElementById('destination');
+    var tripArrival     = document.getElementById('trip-arrival');
+
+    function estimateTravelDetails(pickup, destination, timeStr) {
+        if (!pickup || !destination || !timeStr) return null;
+        var p = pickup.toLowerCase();
+        var d = destination.toLowerCase();
+        
+        var baseCity = 'aruppukottai';
+        var durationHours = 4; // Default fallback
+        
+        var routes = {
+            'chennai': 8, 'madurai': 1, 'coimbatore': 5, 'bangalore': 8,
+            'trichy': 3, 'tirunelveli': 2, 'kanyakumari': 4, 'tuticorin': 2, 'rameshwaram': 3
+        };
+
+        var target = p.includes(baseCity) ? d : (d.includes(baseCity) ? p : d);
+        var found = false;
+        for (var key in routes) {
+            if (target.includes(key)) {
+                durationHours = routes[key];
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            // Default 4 hours if not Aruppukottai, else 3-5 roughly
+            durationHours = 4;
+        }
+        
+        var parts = timeStr.split(':');
+        var hours = parseInt(parts[0], 10);
+        var minutes = parseInt(parts[1], 10);
+        
+        var totalHours = hours + durationHours;
+        var newHours = totalHours % 24;
+        
+        var ampm = newHours >= 12 ? 'PM' : 'AM';
+        var displayHours = newHours % 12;
+        displayHours = displayHours ? displayHours : 12; // 0 should be 12
+        var displayMins = minutes < 10 ? '0' + minutes : minutes;
+        
+        return {
+            duration: durationHours + ' Hours',
+            eta: displayHours + ':' + displayMins + ' ' + ampm
+        };
+    }
+
     function updateTripSummary() {
         var dep = dateInput ? dateInput.value : '';
         var ret = returnDateInput ? returnDateInput.value : '';
+        var pkp = pickupInput ? pickupInput.value : '';
+        var dst = destInput ? destInput.value : '';
+        var pTime = pickupTimeInput ? pickupTimeInput.value : '';
 
-        if (!dep || !ret) {
+        if (!dep && !pTime) {
             if (tripSummary) tripSummary.style.display = 'none';
             return;
         }
@@ -72,10 +125,22 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        var days = daysBetween(dep, ret);
-        if (tripDepart)   tripDepart.textContent   = formatDate(dep);
-        if (tripReturn)   tripReturn.textContent   = formatDate(ret);
-        if (tripDuration) tripDuration.textContent  = days + (days === 1 ? ' Day' : ' Days');
+        var days = '';
+        if (dep && ret) {
+             days = daysBetween(dep, ret);
+             days = days + (days === 1 ? ' Day' : ' Days');
+        } else {
+             days = 'N/A';
+        }
+
+        var estimation = estimateTravelDetails(pkp, dst, pTime);
+
+        if (tripDepart)   tripDepart.textContent   = dep ? formatDate(dep) : 'N/A';
+        if (tripReturn)   tripReturn.textContent   = ret ? formatDate(ret) : 'N/A';
+        
+        if (tripDuration) tripDuration.textContent = estimation ? estimation.duration : 'N/A';
+        if (tripArrival)  tripArrival.textContent  = estimation ? estimation.eta : 'N/A';
+        
         if (tripSummary)  tripSummary.style.display = 'block';
     }
 
@@ -96,6 +161,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (returnDateInput) {
         returnDateInput.addEventListener('change', updateTripSummary);
     }
+    if (pickupTimeInput) pickupTimeInput.addEventListener('change', updateTripSummary);
+    if (pickupInput) pickupInput.addEventListener('input', updateTripSummary);
+    if (destInput) destInput.addEventListener('input', updateTripSummary);
 
     // ── Booking Form ───────────────────────────────────────────────
     var bookingForm  = document.getElementById('bookingForm');
@@ -128,15 +196,23 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show/hide return date rows in modal
         var returnRow   = document.getElementById('sum-return-row');
         var durationRow = document.getElementById('sum-duration-row');
+        var arrivalRow  = document.getElementById('sum-arrival-row');
 
         if (data.return_date) {
             document.getElementById('sum-return').textContent   = formatDate(data.return_date);
-            document.getElementById('sum-duration').textContent = data.duration;
             if (returnRow)   returnRow.style.display   = 'flex';
-            if (durationRow) durationRow.style.display = 'flex';
         } else {
             if (returnRow)   returnRow.style.display   = 'none';
+        }
+
+        if (data.estimation) {
+            document.getElementById('sum-duration').textContent = data.estimation.duration;
+            document.getElementById('sum-arrival').textContent  = data.estimation.eta;
+            if (durationRow) durationRow.style.display = 'flex';
+            if (arrivalRow)  arrivalRow.style.display  = 'flex';
+        } else {
             if (durationRow) durationRow.style.display = 'none';
+            if (arrivalRow)  arrivalRow.style.display  = 'none';
         }
 
         modal.style.display = 'flex';
@@ -151,25 +227,37 @@ document.addEventListener('DOMContentLoaded', function() {
     function sendToWhatsApp(data) {
         var waNumber = '917603813277';
         var msg = '';
-        msg += '🚖 *VINAYAGA TOURS & TRAVELS*\n\n';
+        msg += '🚖 *VINAYAGA TOURS & TRAVELS*\n';
         msg += '*NEW BOOKING REQUEST*\n\n';
-        msg += '👤 *Customer Name:* ' + data.name + '\n';
-        msg += '📞 *Mobile Number:* ' + data.phone + '\n\n';
-        msg += '📍 *Pickup Location:* ' + data.pickup + '\n';
-        msg += '🏁 *Destination:* ' + data.destination + '\n\n';
-        msg += '📅 *Departure Date:* ' + formatDate(data.date) + '\n';
-        msg += '📅 *Return Date:* ' + (data.return_date ? formatDate(data.return_date) : 'Not Specified') + '\n';
-        if (data.duration) {
-            msg += '⏱️ *Trip Duration:* ' + data.duration + '\n';
+        msg += 'Customer Name: ' + data.name + '\n';
+        msg += 'Phone Number: ' + data.phone + '\n';
+        msg += 'Pickup: ' + data.pickup + '\n';
+        msg += 'Destination: ' + data.destination + '\n';
+        msg += 'Travel Date: ' + formatDate(data.date) + '\n';
+        msg += 'Return Date: ' + (data.return_date ? formatDate(data.return_date) : 'N/A') + '\n';
+        
+        var displayTime = data.pickup_time;
+        if (displayTime) {
+            var parts = displayTime.split(':');
+            var h = parseInt(parts[0], 10);
+            var m = parseInt(parts[1], 10);
+            var ampm = h >= 12 ? 'PM' : 'AM';
+            var dh = h % 12;
+            dh = dh ? dh : 12;
+            displayTime = dh + ':' + (m < 10 ? '0'+m : m) + ' ' + ampm;
         }
-        msg += '\n';
-        msg += '🚗 *Travel Type:* ' + data.travel_type + '\n\n';
-        msg += '🚘 *Vehicle Type:* ' + data.vehicle_type + '\n\n';
-        msg += '📱 *Preferred Contact Method:* ' + data.contact_pref + '\n\n';
-        if (data.notes) {
-            msg += '📝 *Additional Notes:* ' + data.notes + '\n\n';
+
+        msg += 'Pickup Time: ' + (displayTime || 'Not Specified') + '\n';
+        msg += 'Vehicle Type: ' + data.vehicle_type + '\n';
+        msg += 'Passengers: ' + (data.vehicle_type.match(/\d+\+\d+/) ? data.vehicle_type.match(/\d+\+\d+/)[0] : 'N/A') + '\n';
+        
+        if (data.estimation) {
+            msg += 'Estimated Arrival Time: ' + data.estimation.eta + '\n';
+        } else {
+            msg += 'Estimated Arrival Time: N/A\n';
         }
-        msg += 'Please contact the customer regarding this booking request.';
+        
+        msg += 'Additional Notes: ' + (data.notes || 'None') + '\n';
 
         var waUrl = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(msg);
         window.open(waUrl, '_blank');
@@ -186,6 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var destination  = document.getElementById('destination').value.trim();
             var date         = document.getElementById('date').value;
             var return_date  = document.getElementById('return_date').value;
+            var pickup_time  = document.getElementById('pickup_time').value;
             var travel_type  = document.getElementById('travel_type').value;
             var vehicle_type = document.getElementById('vehicle_type').value;
             var contactPrefEl = document.querySelector('input[name="contact_pref"]:checked');
@@ -198,6 +287,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!pickup)       return showMessage('error', 'Please enter a pickup location.');
             if (!destination)  return showMessage('error', 'Please enter a destination.');
             if (!date)         return showMessage('error', 'Please select a departure date.');
+            if (!pickup_time)  return showMessage('error', 'Please select a pickup time.');
             if (!travel_type)  return showMessage('error', 'Please select a travel type.');
             if (!vehicle_type) return showMessage('error', 'Please select a vehicle type.');
             if (!contact_pref) return showMessage('error', 'Please select your preferred contact method.');
@@ -214,14 +304,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 duration = days + (days === 1 ? ' Day' : ' Days');
             }
 
+            var estimation = estimateTravelDetails(pickup, destination, pickup_time);
+
             bookingData = {
                 name: name,
                 phone: phone,
                 pickup: pickup,
                 destination: destination,
                 date: date,
+                pickup_time: pickup_time,
                 return_date: return_date,
                 duration: duration,
+                estimation: estimation,
                 travel_type: travel_type,
                 vehicle_type: vehicle_type,
                 contact_pref: contact_pref,
